@@ -17,7 +17,7 @@
 
 use kdtree::{distance::squared_euclidean, KdTree};
 // use time::Instant;
-use serde_derive::{Serialize, Deserialize};
+use serde_derive::{Deserialize, Serialize};
 use std::error;
 use std::fmt;
 use std::path::Path;
@@ -37,6 +37,8 @@ pub struct Record {
     pub admin2: String,
     /// Administrative district 3
     pub admin3: String,
+    /// Country code
+    pub cc: String,
 }
 
 /// Search result from querying a lat/long.
@@ -136,8 +138,8 @@ impl fmt::Display for Record {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
             f,
-            "({}, {}): {}, {}, {}, {}",
-            self.lat, self.lon, self.name, self.admin1, self.admin2, self.admin3
+            "({}, {}): {}, {}, {}, {}, {}",
+            self.lat, self.lon, self.name, self.admin1, self.admin2, self.admin3, self.cc
         )
     }
 }
